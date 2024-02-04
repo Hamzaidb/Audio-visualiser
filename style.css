@@ -43,7 +43,19 @@
     margin-left: 20px;
 }
 
-.button-wrapper span.label {
+.button-wrapper-2 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px; 
+    margin-bottom: 140px; 
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    margin-left: 20px;
+}
+
+.button-wrapper span.label,
+.button-wrapper-2 span.label {
     position: relative;
     z-index: 0;
     display: inline-block;
@@ -55,7 +67,8 @@
     font-size: 12px;
 }
 
-#fileupload {
+#fileupload,
+#imgupload {
     display: inline-block;
     position: absolute;
     z-index: 1;

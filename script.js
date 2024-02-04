@@ -1,6 +1,7 @@
 const container = document.getElementById('container');
 const canvas = document.getElementById('canvas1');
 const file = document.getElementById('fileupload');
+const image = document.getElementById('imgupload');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
@@ -8,6 +9,21 @@ let audioSource;
 let analyser;
 const sprite = new Image();
 sprite.src = 'Deezer.png'
+
+let useImage = false;
+
+document.getElementById('imgupload').addEventListener('change', function() {
+    const files = this.files;
+    if (files.length > 0) {
+        const file = files[0];
+        if (!file.type.startsWith('image/')) {
+            alert('Veuillez insérer une image.');
+            return;
+        }
+        sprite.src = URL.createObjectURL(file);
+        useImage = true;
+    }
+});
 
 
 container.addEventListener('click', function(){
@@ -34,7 +50,11 @@ container.addEventListener('click', function(){
         x = 0;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         analyser.getByteFrequencyData(dataArray);
-        drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
+        if (useImage) {
+            drawVisualiserImage(bufferLength, x, barWidth, barHeight, dataArray);
+        } else {
+            drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
+        }
         requestAnimationFrame(animate);
     }
     animate();
@@ -42,6 +62,12 @@ container.addEventListener('click', function(){
 
 file.addEventListener('change', function(){
     const files = this.files;
+    if (files.length > 0) {
+        const file = files[0];
+        if (!file.type.startsWith('audio/')) {
+            alert('Veuillez insérer un fichier audio.');
+            return;
+        }
     const audio1 = document.getElementById('audio1');
     audio1.src = URL.createObjectURL(files[0]);
     audio1.load();
@@ -64,13 +90,16 @@ file.addEventListener('change', function(){
     function animate(){
         x = 0;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
         analyser.getByteFrequencyData(dataArray);
-
+        if (useImage) {
+            drawVisualiserImage(bufferLength, x, barWidth, barHeight, dataArray);
+        } else {
+            drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
+        }
         requestAnimationFrame(animate);
     }
     animate();
-
+}
 });
 
 
@@ -98,31 +127,18 @@ function drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray){
     }
 }
 
-/*function drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray){
+function drawVisualiserImage(bufferLength, x, barWidth, barHeight, dataArray){
         
     for (let i = 0; i < bufferLength; i++) {
             barHeight = dataArray[i] * 1.5;
             ctx.save();
             ctx.translate(canvas.width/2, canvas.height/2);
-            //ctx.rotate(i * Math.PI * 10 / bufferLength);
             ctx.rotate(i * 2)
-            /*const red = i * barHeight/20;
-            const green = i/2;
-            const blue = barHeight;
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, barWidth, 15);*/
-
-            //const hue = i;
-          //  ctx.drawImage(sprite, 0, barHeight, barHeight/2.5, barHeight/2.5);
-
-            //ctx.fillStyle = 'hsl(' + hue + ',100%, 50%)';
-            //ctx.fillRect(0, 0, barWidth, barHeight);
-          //  x += barWidth;
-           // ctx.restore();
-   /* }
+            ctx.fillRect(0, 0, barWidth, 15);
+          ctx.drawImage(sprite, 0, barHeight, barHeight/2.5, barHeight/2.5);
+          x += barWidth;
+           ctx.restore();
+    }
     let size = dataArray[15] * 1.5 > 100 ? dataArray[15] : 100;
-    ctx.drawImage(sprite, canvas.width/2 - size/2, canvas.height/2 - size/2, size, size);
-
-   
-        
-} */
+    ctx.drawImage(sprite, canvas.width/2 - size/2, canvas.height/2 - size/2, size, size);   
+} 
