@@ -91,3 +91,50 @@
         left: 10px; 
     }
 }
+
+
+
+.btn-list {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    bottom: 95px; /* Aligner avec les autres éléments en bas */
+    left: 12%; /* Positionner à droite du bouton "Upload Audio" */
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-list {
+        left: 40%; /* Positionner à gauche sur les petits écrans */
+        bottom: 100px; /* Ajuster la position en bas sur les petits écrans */
+    }
+
+
+}
+
+.button-active {
+    background-color: rgb(4, 161, 12);
+    color: black;
+}
+
+.button-draw0,
+.button-draw1,
+.button-draw2,
+.button-draw3,
+.button-draw4 {
+    position: relative; /* Chaque bouton est relatif à son parent .btn-list */
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.label {
+    color: white;
+    background-color: transparent;
+}
+
+
+
