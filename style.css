@@ -24,6 +24,23 @@
     height: 100%;
 }
 
+@media only screen and (max-width: 1025px) {
+    #canvas1 {
+        width: 200%;
+        left: -45%;
+        height: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    #canvas1 {
+        width: 240%;
+        left: -68%;
+        height: 70%;
+    }
+}
+
 #audio1 {
     width: 20%;
     margin: 10px; 
