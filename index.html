@@ -12,23 +12,27 @@
     <div class="controls controls-overlay">
       <div id="filterInterface" class="control">
         <div id="streamAudioSelect">
-          <label for="streamPath"> Stream from URL: </label>
-          <input class="audio-input" type="text" id="streamPath" name="streamPath" value="https://usa9.fastcast4u.com/proxy/jamz?mp=/1">
-          <button type="button" onclick="useAudioStream()">Submit</button>
+          <label for="streamPath"> Lien URL d'un stream: </label>
+          <input class="audio-input" type="text" id="streamPath" name="streamPath" value="http://hyades.shoutca.st:8043/stream">
+          <button type="button" onclick="useAudioStream()">Entrer</button>
         </div>
         <div>
-          <label for="filePath"> Local File: </label>
+          <label for="filePath"> Ajouter un fichier local: </label>
           <input class="audio-input" type="file" id="filePath" name="filePath" onchange="useFileStream()">
         </div>
+        <br>
+        <label> Ajouter des effets audio: </label>
         <button type="button" onclick="addNode(generateRandomId('gain'), 'gain');">+ Gain</button>
         <button type="button" onclick="addNode(generateRandomId('lpf'), 'lpf');">+ Low Pass Filter</button>
         <button type="button" onclick="addNode(generateRandomId('hpf'), 'hpf');">+ High Pass Filter</button>
         <button type="button" onclick="addNode(generateRandomId('reverb'), 'reverb');">+ Reverb</button>
         <button type="button" onclick="addNode(generateRandomId('pan'), 'pan');">+ Pan</button>
-        <button type="button" id="vis0">Visualizer 0</button>
-        <button type="button" id="vis1">Visualizer 1</button>
-        <button type="button" id="vis2">Visualizer 2</button>
-        <button type="button" id="vis3">Visualizer 3</button>
+        <br>
+        <label> Modifier l'apparence de la visualisation: </label>
+        <button type="button" id="vis0">style 1(default)</button>
+        <button type="button" id="vis1">style 2</button>
+        <button type="button" id="vis2">style 3</button>
+        <button type="button" id="vis3">style 4</button>
         <!--<button type="button" id="autopan">auto pan</button> -->
       </div>
       <div id="audioDemo" class="control">
