@@ -1,157 +1,68 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
     background-color: black;
 }
 
-#container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: black;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-#canvas1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-@media only screen and (max-width: 1025px) {
-    #canvas1 {
-        width: 200%;
-        left: -45%;
-        height: 80%;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-
-    #canvas1 {
-        width: 240%;
-        left: -68%;
-        height: 70%;
-    }
-}
-
-#audio1 {
-    width: 20%;
-    margin: 10px; 
-    bottom: 10px; 
-    left: 10px; 
-    position: absolute;
-}
-
-.button-wrapper {
-    position: absolute;
-    bottom: 10px;
-    left: 10px; 
-    margin-bottom: 80px; 
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 15px;
-    margin-left: 20px;
-}
-
-.button-wrapper-2 {
-    position: absolute;
-    bottom: 10px;
-    left: 10px; 
-    margin-bottom: 140px; 
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 15px;
-    margin-left: 20px;
-}
-
-.button-wrapper span.label,
-.button-wrapper-2 span.label {
-    position: relative;
-    z-index: 0;
-    display: inline-block;
-    width: 100%;
-    cursor: pointer;
-    color: rgb(255, 255, 255);
-    padding: 10px 0;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-#fileupload,
-#imgupload {
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 50px;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-@media only screen and (max-width: 768px) {
-    #audio1 {
-        width: 80%; 
-        margin: 10px; 
-    }
-
-    .button-wrapper {
-        bottom: 10px;
-        left: 10px; 
-    }
-}
-
-
-
-.btn-list {
-    position: absolute;
+.controls {
+    margin: 10px;
     display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    bottom: 95px; /* Aligner avec les autres éléments en bas */
-    left: 12%; /* Positionner à droite du bouton "Upload Audio" */
+    flex-direction: row;
+    position: absolute;
+    color: white;
 }
 
-@media only screen and (max-width: 768px) {
-    .btn-list {
-        left: 40%; /* Positionner à gauche sur les petits écrans */
-        bottom: 100px; /* Ajuster la position en bas sur les petits écrans */
-    }
+.controls-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+ 
 
+  }
+  
 
+#visualizer {
+    height: 100%;
+    width: 100%;
 }
 
-.button-active {
-    background-color: rgb(4, 161, 12);
-    color: black;
+.control {
+    display:flex;
+    flex-direction: column;
 }
 
-.button-draw0,
-.button-draw1,
-.button-draw2,
-.button-draw3,
-.button-draw4 {
-    position: relative; /* Chaque bouton est relatif à son parent .btn-list */
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 15px;
-    margin-left: 10px;
+.node-control {
+    height:30px
+}
+
+#filterInterface {
+    margin-right: 20px;
+    min-width: 150px;
+}
+
+#audioDemo {
+    width: 100%;
+    align-items: flex-end;
+}
+
+.close-button {
+    max-width: 100%;
+    height: 25px;
     cursor: pointer;
 }
 
-.label {
-    color: white;
-    background-color: transparent;
+.audio-input {
+    width: 70%;
 }
 
+.control div {
+    margin: 5px 0px 5px 0px;
+}
 
-
+.control button {
+    margin: 5px 0px 5px 0px;
+}
